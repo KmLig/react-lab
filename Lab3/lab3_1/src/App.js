@@ -1,15 +1,14 @@
-
+import logo from './logo.svg';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/MenuComponents';
+import Menu from './components/MenuComponent';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      fgff
+    <div>
       <Navbar dark color="primary">
           <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+            <NavbarBrand href="/">Ristorante Menu</NavbarBrand>
           </div>
         </Navbar>
         <Menu/>
