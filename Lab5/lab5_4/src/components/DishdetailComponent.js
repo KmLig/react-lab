@@ -56,7 +56,8 @@ const DishDetail = (props) => {
     return (
       <div className="container">
         <div className="row">
-          <Breadcrumb>            
+          <Breadcrumb>      
+            <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>      
             <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
             <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
           </Breadcrumb>
@@ -67,8 +68,9 @@ const DishDetail = (props) => {
         </div>
         <div className="row">
           <RenderDish dish={props.dish} />
-          <RenderComments comments={props.comments} />
+          <RenderComments comments={props.comments} />          
         </div>
+        <hr />
       </div>
     );
   }
