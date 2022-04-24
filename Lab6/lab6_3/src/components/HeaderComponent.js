@@ -5,7 +5,15 @@ import {
   Nav,
   NavbarToggler,
   Collapse,
-  NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input
+  NavItem,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
@@ -14,7 +22,7 @@ class Header extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      isModalOpen: false
+      isModalOpen: false,
     };
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -28,13 +36,20 @@ class Header extends Component {
 
   toggleModal() {
     this.setState({
-      isModalOpen: !this.state.isModalOpen
+      isModalOpen: !this.state.isModalOpen,
     });
   }
 
   handleLogin(event) {
     this.toggleModal();
-    alert("Username: " + this.username.value + "Password: " + this.password.value + " Remember: " + this.remember.checked);
+    alert(
+      "Username: " +
+        this.username.value +
+        "Password: " +
+        this.password.value +
+        " Remember: " +
+        this.remember.checked
+    );
     event.preventDefault();
   }
   render() {
@@ -43,12 +58,14 @@ class Header extends Component {
         <Navbar dark expand="md">
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
-            <NavbarBrand className="mr-auto pull-left" href="/"><img
+            <NavbarBrand className="mr-auto pull-left" href="/">
+              <img
                 src="assets/images/logo.png"
                 height="30"
                 width="41"
-                alt="Ristorante Con Fusion" 
-              /></NavbarBrand>
+                alt="Ristorante Con Fusion"
+              />
+            </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
                 <NavItem>
@@ -73,10 +90,10 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Nav className="ml-auto" navbar>
+              <Nav className="ms-auto" navbar>
                 <NavItem>
-                  <Button outline onClick={this.toggleModal}>
-                    <span className="fa fa-sign-in fa-lg"></span>
+                  <Button className="text-white" outline onClick={this.toggleModal}>
+                    <span className="fa fa-sign-in fa-lg"></span> Login
                   </Button>
                 </NavItem>
               </Nav>
@@ -103,18 +120,35 @@ class Header extends Component {
             <Form onSubmit={this.handleLogin}>
               <FormGroup>
                 <Label htmlFor="username">User name</Label>
-                <Input type="text" id="username" name="username" innerRef={(input) => this.username = input}/>
+                <Input
+                  type="text"
+                  id="username"
+                  name="username"
+                  innerRef={(input) => (this.username = input)}
+                />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="password">Password</Label>
-                <Input type="password" id="password" name="password" innerRef={(input) => this.password = input}/>
+                <Input
+                  type="password"
+                  id="password"
+                  name="password"
+                  innerRef={(input) => (this.password = input)}
+                />
               </FormGroup>
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" name="remember"  innerRef={(input) => this.remember = input}/>Remember me
+                  <Input
+                    type="checkbox"
+                    name="remember"
+                    innerRef={(input) => (this.remember = input)}
+                  />
+                  Remember me
                 </Label>
               </FormGroup>
-              <Button type="submit" value="submit" color="primary">Login</Button>
+              <Button type="submit" value="submit" color="primary">
+                Login
+              </Button>
             </Form>
           </ModalBody>
         </Modal>
