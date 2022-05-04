@@ -90,7 +90,7 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Nav className="ms-auto" navbar>
+              <Nav className="ml-auto" navbar>
                 <NavItem>
                   <Button className="text-white" outline onClick={this.toggleModal}>
                     <span className="fa fa-sign-in fa-lg"></span> Login
