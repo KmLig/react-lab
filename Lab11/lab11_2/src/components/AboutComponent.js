@@ -1,6 +1,10 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
+import { Fade, Stagger } from 'react-animation-components';
+import { Loading } from './LoadingComponent';
+
 
 function RenderLeaders({leader}) {
     return (
@@ -8,7 +12,7 @@ function RenderLeaders({leader}) {
             <div className='row'>
                 <hr />
                 <div className='col-12 col-md-2 pull-left'>
-                    <img src={leader.image} alt={leader.name}></img>
+                    <img src={baseUrl + leader.image} alt={leader.name}></img>
                 </div>
                 <div className='col-12 col-md-10'>
                     <h3>{leader.name}</h3>
@@ -20,14 +24,43 @@ function RenderLeaders({leader}) {
     )
 }
 
-function About(props) {
+function LeaderList(props) {
 
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
-            <RenderLeaders leader={leader} />
+            <Fade in key={leader._id}>
+                <div className="col-12 mt-2">
+                        <RenderLeaders leader={leader} />
+                </div>
+            </Fade>
         );
     });
 
+    if (props.leaders.isLoading) {
+        return(
+                <Loading />
+        );
+    }
+    else if (props.leaders.errMess) {
+        return(
+            <div className="col-12"> 
+                <h4>{props.leaders.errMess}</h4>
+            </div>
+        );
+    }
+    else {
+        return (
+            <Media list>
+                <Stagger in>
+                    {leaders}
+                </Stagger>
+            </Media>
+        );
+    }
+}
+
+function About(props) {
+    
     return(
         <div className="container">
             <div className="row">
@@ -83,9 +116,7 @@ function About(props) {
                     <h2>Corporate Leadership</h2>
                 </div>                
                 <div className="col-12 mt-3">
-                    <Media list>
-                        {leaders}
-                    </Media>
+                    <LeaderList leaders={props.leaders} />
                 </div>
             </div>
         </div>
