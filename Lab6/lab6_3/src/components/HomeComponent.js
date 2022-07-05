@@ -31,6 +31,6 @@ function Home(props) {
             </div>
         </div>
     );
-}
+} outsource 
 
 export default Home;
