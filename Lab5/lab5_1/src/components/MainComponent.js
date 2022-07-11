@@ -20,6 +20,7 @@ class Main extends Component {
       this.setState({ selectedDish: dishId});
   }
   render() {    
+    console.log(this.state);
     return (
       <div>
         <Header />
