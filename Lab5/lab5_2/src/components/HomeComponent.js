@@ -1,8 +1,11 @@
 import React from 'react';
+
+
 function Home(props) {
+    console.log("in HP");
     return (
         <div className="container">
-            <h4>Home</h4>
+            <h4>HomePage</h4>
         </div>
     );
 }
