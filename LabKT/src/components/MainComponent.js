@@ -4,7 +4,7 @@ import Menu from './MenuComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { DISHES } from '../shared/dishes';
-import Test from './test';
+import Test from './Test';
 import DishDetail  from './DishdetailComponent';
 
 class Main extends Component {
